@@ -6,7 +6,11 @@
   (def stack (list))
   (def parentheses(hash-map ")" "(" , "]" "[", "}" "{"))
 
-  (loop [i 0]
+
+
+  (if(> (count check_str) 1)
+  (do
+   (loop [i 0]
     (if(< i (count check_str))
       (do
         (let [ch (subs check_str i (+ i 1))]
@@ -19,32 +23,27 @@
 
                 (def stack (pop stack))))
             (def stack (conj stack ch)))
+          (recur (inc i))))))
+  (empty? stack))
+  (> (count check_str) 1)))
 
-          (recur (inc i)))))))
+
 
 
 
 
 (defn -main
   [& args]
+  (println (isValid ""))
+  (println (isValid "("))
+  (println (isValid "()"))
+  (println (isValid "()[]{}"))
+  (println (isValid "(]"))
+  (println (isValid "([)]"))
+  (println (isValid "{[]}"))
+  (println (isValid "{[}]()"))
 
-  (isValid "()")
-  (println "() :" (empty? stack))
 
-  (isValid "()[]{}")
-  (println "()[]{} :"(empty? stack))
-
-  (isValid "(]")
-  (println "(] :"(empty? stack))
-
-  (isValid "([)]")
-  (println "([)] :"(empty? stack))
-
-  (isValid "{[]}")
-  (println "{[]} :"(empty? stack))
-
-  (isValid "{[}]()")
-  (println "{[}]() :"(empty? stack))
 
 
 

@@ -3,5 +3,19 @@
             [code-test.core :refer :all]))
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is not(= 0 1))))
+
+  (testing (is (= (isValid "")false)))
+  (testing (is (= (isValid "(")false)))
+  (testing (is (= (isValid "()")true)))
+  (testing (is (= (isValid "()[]{}") true)))
+  (testing (is (= (isValid "(]") false)))
+  (testing (is (= (isValid "([)]") false)))
+  (testing (is (= (isValid "{[]}") true)))
+  (testing (is (= (isValid "{[}]()") false)))
+
+
+
+
+  )
+
+
