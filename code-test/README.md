@@ -1,6 +1,6 @@
-# isValid
+# code-test
 
-isValid is a program built in Clojure for checking whether a string of parentheses is valid.
+Code-test is a program built in Clojure for checking whether a string of parentheses is valid.
 
 
 ## Usage
@@ -13,13 +13,23 @@ isValid is a program built in Clojure for checking whether a string of parenthes
 
 ## How to Build
 
- 1. Build a new clojure project using command: `lein new app code-test` ;
- 2. Run test cases using command: `lein do test` ;
- 3. Package up the project files and all dependencies into a jar file using command: `lein uberjar` ;
- 4. Generate a pom.xml file for Maven interoperability using command: `lein pom` ;
+ - Build a new clojure project using command: 
+   
+       lein new app code-test ;
+ - Run test cases using command: 
+   
+       lein do test ;
+ - Package up the project files and all dependencies into a jar file using command: 
+   
+       lein uberjar ;
+ - Generate a pom.xml file for Maven interoperability using command: 
+   
+       lein pom ;
 
 ## How to Run
- Run the program using command: `java -jar target/uberjar/code-test-0.1.0-SNAPSHOT-standalone.jar` ;
+ Run the program using command: 
+
+    java -jar target/uberjar/code-test-0.1.0-SNAPSHOT-standalone.jar ;
 
 
 ## Program Development
@@ -34,20 +44,31 @@ isValid is a program built in Clojure for checking whether a string of parenthes
 #### Implementation
 - Create a hash-map to construct the corresponding relationship between opening and closing parentheses: key for closing parentheses, value for opening parentheses:
  
-  `(def parentheses(hash-map ")" "(" , "]" "[", "}" "{"))`
+      (def parentheses(hash-map ")" "(" , "]" "[", "}" "{"))
 - Set up a new empty stack, loop each char of the string and verify it according to the process.
-  `if parentheses.containsKey(char) and stack != empty and stack.peek = parentheses.get(char) :
-  stack pop;`
+ 
+      if parentheses.containsKey(char) 
+  
+      and stack != empty 
+  
+      and stack.peek = parentheses.get(char) :
+  
+      stack pop;
+
+      Otherwise：
+   
+      stack push(char)
+  
+
   
 
 
 
 ### Problems
 
-The program should return false and break the loop in a condition where the stack is not empty and the peek of stack is not the corresponding opening parenthesis.
+The program should return false and break the loop in a condition where the stack is empty, or the peek of stack is not the corresponding opening parenthesis if a closing parenthesis is on the process.
+
 In this program, it will not break the loop but run until finish the loop, and return false.
 
 
-## License
 
-Copyright © 2021 Vennie
